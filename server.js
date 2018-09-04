@@ -42,11 +42,14 @@ app.post('/api/users/', (req, res, next) => {
 });
 
 app.put('/api/users/', (req, res, next) => {
+
+console.log(req.body);
+
   User.findById(req.body.user.id)
     .then(userToUpdate => {
       userToUpdate.update({ name: req.body.user.name });
     })
-    .then(updatedUser => res.send(updatedUser))
+    .then(updatedUser => res.sendStatus(200))
     .then(() => console.log('updated'))
     .catch(err => next(err));
 });

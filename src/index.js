@@ -46,22 +46,27 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
-  updateUser(user) {
+  updateUser(userToUpdate) {
     axios
       .put('/api/users/', {
-        user
+        user: userToUpdate
       })
       .then(response => {
-        const allUsers = this.state.users;
 
-        const updatedUsers = this.state.users.filter(user => {
-          return id !== user.id;
+        const updatedUsers = this.state.users.map(user => {
+          
+          if(user.id === userToUpdate.id){
+            user.name = userToUpdate.name
+            return user
+          }
+          else{
+            return user
+          }
         });
 
-        updatedUsers.push(user);
 
         //allUsers[user.id - 1] = user;
-        console.log(allUsers);
+        //console.log(allUsers);
         this.setState({ users: updatedUsers });
       })
       .catch(err => console.log(err));
