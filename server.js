@@ -54,5 +54,5 @@ app.put('/api/users/', (req, res, next) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-	console.log(`App listening in port ${PORT}`);
+  console.log(`App listening in port ${PORT}`);
 });

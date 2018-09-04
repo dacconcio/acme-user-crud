@@ -36,7 +36,7 @@ class App extends React.Component {
   createUser(userName) {
     axios
       .post('/api/users/', {
-        userName
+        user: userName
       })
       .then(response => {
         const newUsers = this.state.users;

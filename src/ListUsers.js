@@ -13,7 +13,7 @@ export default function ListUsers(props) {
               onClick={() => props.deleteFunc(user.id)}
               style={{ display: 'inline' }}
             >
-                        X
+                        - X
             </div>
           </div>
         );
