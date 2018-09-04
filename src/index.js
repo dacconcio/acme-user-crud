@@ -51,22 +51,16 @@ class App extends React.Component {
       .put('/api/users/', {
         user: userToUpdate
       })
-      .then(response => {
-
+      .then(() => {
         const updatedUsers = this.state.users.map(user => {
-          
-          if(user.id === userToUpdate.id){
-            user.name = userToUpdate.name
-            return user
-          }
-          else{
-            return user
+          if (user.id === userToUpdate.id) {
+            user.name = userToUpdate.name;
+            return user;
+          } else {
+            return user;
           }
         });
 
-
-        //allUsers[user.id - 1] = user;
-        //console.log(allUsers);
         this.setState({ users: updatedUsers });
       })
       .catch(err => console.log(err));
