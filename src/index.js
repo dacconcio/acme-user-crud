@@ -53,9 +53,16 @@ class App extends React.Component {
       })
       .then(response => {
         const allUsers = this.state.users;
-        allUsers[user.id - 1] = user;
+
+        const updatedUsers = this.state.users.filter(user => {
+          return id !== user.id;
+        });
+
+        updatedUsers.push(user);
+
+        //allUsers[user.id - 1] = user;
         console.log(allUsers);
-        this.setState({ users: allUsers });
+        this.setState({ users: updatedUsers });
       })
       .catch(err => console.log(err));
   }
@@ -84,9 +91,7 @@ class App extends React.Component {
             <Route
               exact
               path="/users"
-              render={() => (
-                <ListUsers deleteFunc={deleteUser} users={users} />
-              )}
+              render={() => <ListUsers deleteFunc={deleteUser} users={users} />}
             />
             <Route
               exact
@@ -119,5 +124,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-
